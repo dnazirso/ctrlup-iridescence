@@ -17,7 +17,8 @@ function App() {
     <div className="App" onMouseMove={onMouseMove}>
       <div>
         <div ref={ctrlup}>
-          <span>CtrlUp</span>
+          <span className="date">2021</span>
+          <span className="ctrlup">CtrlUp</span>
         </div>
       </div>
     </div>

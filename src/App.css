@@ -34,11 +34,13 @@
 }
 
 .App > div > div {
+  display: flex;
+  flex-direction: column;
   background: black;
   padding: 15px;
 }
 
-.App > div > div > span {
+.ctrlup {
   background: var(--rainbow);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -47,4 +49,17 @@
   font-family: Montserrat;
   font-weight: bolder;
   font-size: 128px;
+  margin-top: -20px;
+}
+
+.date {
+  background: var(--rainbow);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: Montserrat;
+  font-weight: bolder;
+  font-size: 16px;
+  align-self: flex-end;
 }
