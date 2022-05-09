@@ -15,8 +15,10 @@ function App() {
 
   return (
     <div className="App" onMouseMove={onMouseMove}>
-      <div className="ctrlup-container" ref={ctrlup}>
-        <span className="ctrlup">CtrlUp</span>
+      <div>
+        <div ref={ctrlup}>
+          <span>CtrlUp</span>
+        </div>
       </div>
     </div>
   );

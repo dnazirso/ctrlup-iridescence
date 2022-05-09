@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap);
+
 :root {
   --rainbow: linear-gradient(
       var(--angle, 0),
@@ -23,19 +25,26 @@
   height: 100vh;
 }
 
-.ctrlup-container {
-  background-color: black;
-  border-style: solid;
-  border-width: 5px;
-  border-image: var(--rainbow);
+.App > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--rainbow);
+  padding: 5px;
 }
 
-.ctrlup {
+.App > div > div {
+  background: black;
+  padding: 15px;
+}
+
+.App > div > div > span {
   background: var(--rainbow);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  font-family: Montserrat;
   font-weight: bolder;
   font-size: 128px;
 }
