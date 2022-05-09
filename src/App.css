@@ -36,6 +36,6 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  /*Transparent bgrd*/
   font-weight: bolder;
+  font-size: 128px;
 }
