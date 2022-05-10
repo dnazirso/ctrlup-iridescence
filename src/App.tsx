@@ -1,11 +1,43 @@
 /* eslint-disable no-restricted-globals */
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import "./App.css";
 
 function App() {
   let ctrlup = useRef<HTMLSpanElement>(null);
   let date = useRef<HTMLSpanElement>(null);
   const root = document.documentElement;
+
+  useEffect(() => {
+    window.addEventListener("deviceorientation", handleOrientation, true);
+
+    function handleOrientation(event: DeviceOrientationEvent) {
+      if (!event.beta) return;
+
+      if (ctrlup.current) {
+        let rect = ctrlup.current.getBoundingClientRect();
+        root.style.setProperty(
+          "--x",
+          `${
+            (rect.left + rect.right) * (event.beta / 180) -
+            (rect.left + rect.right) / 2
+          }px`
+        );
+      }
+      if (date.current) {
+        let rectd = date.current.getBoundingClientRect();
+        root.style.setProperty(
+          "--xDate",
+          `${
+            -(
+              (rectd.left + rectd.right) * (event.beta / 180) +
+              (rectd.left + rectd.right) / 2
+            ) / 3
+          }px`
+        );
+      }
+    }
+  }, [root.style]);
+
   const onMouseMove = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     if (ctrlup.current) {
       let rect = ctrlup.current.getBoundingClientRect();
