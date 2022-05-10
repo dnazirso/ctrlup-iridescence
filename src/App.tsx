@@ -12,9 +12,9 @@ function App() {
       root.style.setProperty(
         "--x",
         `${
-          ((rect.left + rect.right) * (e.clientX / screen.width) +
+          ((rect.left + rect.right) * (e.clientX / screen.width) -
             (rect.left + rect.right) / 2) /
-          10
+          5
         }px`
       );
     }
