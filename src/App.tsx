@@ -1,24 +1,47 @@
+/* eslint-disable no-restricted-globals */
 import { useRef } from "react";
 import "./App.css";
 
 function App() {
-  let ctrlup = useRef<HTMLDivElement>(null);
+  let ctrlup = useRef<HTMLSpanElement>(null);
+  let date = useRef<HTMLSpanElement>(null);
   const root = document.documentElement;
-  const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (!ctrlup.current) return;
-    var rect = ctrlup.current.getBoundingClientRect();
-    let x = e.clientX - (rect.left + rect.right) / 2;
-    let y = e.clientY - (rect.top + rect.bottom) / 2;
-    let angle = (Math.atan2(x, y) * 360) / Math.PI;
-    root.style.setProperty("--angle", `${angle}deg`);
+  const onMouseMove = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    if (ctrlup.current) {
+      let rect = ctrlup.current.getBoundingClientRect();
+      root.style.setProperty(
+        "--x",
+        `${
+          ((rect.left + rect.right) * (e.clientX / screen.width) +
+            (rect.left + rect.right) / 2) /
+          10
+        }px`
+      );
+    }
+    if (date.current) {
+      let rectd = date.current.getBoundingClientRect();
+      root.style.setProperty(
+        "--xDate",
+        `${
+          -(
+            (rectd.left + rectd.right) * (e.clientX / screen.width) +
+            (rectd.left + rectd.right) / 2
+          ) / 60
+        }px`
+      );
+    }
   };
 
   return (
     <div className="App" onMouseMove={onMouseMove}>
       <div>
-        <div ref={ctrlup}>
-          <span className="date">2021</span>
-          <span className="ctrlup">CtrlUp</span>
+        <div>
+          <span className="date" ref={date}>
+            2021
+          </span>
+          <span className="ctrlup" ref={ctrlup}>
+            CtrlUp
+          </span>
         </div>
       </div>
     </div>

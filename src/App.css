@@ -1,25 +1,54 @@
 :root {
-  --rainbow: linear-gradient(
-      var(--angle, 0),
-      rgba(120, 120, 120, 1) 15%,
+  --rainbow: var(--x)
+    linear-gradient(
+      110deg,
+      rgba(120, 120, 120, 1) 0%,
+      rgba(120, 120, 120, 1) 10%,
       rgba(181, 181, 181, 1) 20%,
-      rgba(227, 227, 227, 1) 39%,
-      rgba(255, 0, 0, 1) 40%,
-      rgba(255, 154, 0, 1) 42%,
-      rgba(208, 222, 33, 1) 44%,
-      rgba(79, 220, 74, 1) 46%,
-      rgba(63, 218, 216, 1) 48%,
+      rgba(227, 227, 227, 1) 27%,
+      rgba(255, 255, 255, 1) 33%,
+      rgba(255, 0, 0, 1) 35%,
+      rgba(255, 154, 0, 1) 38%,
+      rgba(208, 222, 33, 1) 41%,
+      rgba(79, 220, 74, 1) 44%,
+      rgba(63, 218, 216, 1) 47%,
       rgba(47, 201, 226, 1) 50%,
-      rgba(28, 127, 238, 1) 52%,
-      rgba(95, 21, 242, 1) 54%,
-      rgba(186, 12, 248, 1) 56%,
-      rgba(251, 7, 217, 1) 58%,
-      rgba(255, 0, 0, 1) 60%,
-      rgba(227, 227, 227, 1) 61%,
+      rgba(28, 127, 238, 1) 53%,
+      rgba(95, 21, 242, 1) 56%,
+      rgba(186, 12, 248, 1) 59%,
+      rgba(251, 7, 217, 1) 62%,
+      rgba(255, 0, 0, 1) 65%,
+      rgba(255, 255, 255, 1) 68%,
+      rgba(227, 227, 227, 1) 74%,
       rgba(181, 181, 181, 1) 80%,
-      rgba(120, 120, 120, 1) 85%
-    )
-    repeat;
+      rgba(120, 120, 120, 1) 90%,
+      rgba(120, 120, 120, 1) 100%
+    );
+  --rainbowDate: var(--xDate)
+    linear-gradient(
+      110deg,
+      rgba(120, 120, 120, 1) 0%,
+      rgba(120, 120, 120, 1) 10%,
+      rgba(181, 181, 181, 1) 20%,
+      rgba(227, 227, 227, 1) 27%,
+      rgba(255, 255, 255, 1) 33%,
+      rgba(255, 0, 0, 1) 35%,
+      rgba(255, 154, 0, 1) 38%,
+      rgba(208, 222, 33, 1) 41%,
+      rgba(79, 220, 74, 1) 44%,
+      rgba(63, 218, 216, 1) 47%,
+      rgba(47, 201, 226, 1) 50%,
+      rgba(28, 127, 238, 1) 53%,
+      rgba(95, 21, 242, 1) 56%,
+      rgba(186, 12, 248, 1) 59%,
+      rgba(251, 7, 217, 1) 62%,
+      rgba(255, 0, 0, 1) 65%,
+      rgba(255, 255, 255, 1) 68%,
+      rgba(227, 227, 227, 1) 74%,
+      rgba(181, 181, 181, 1) 80%,
+      rgba(120, 120, 120, 1) 90%,
+      rgba(120, 120, 120, 1) 100%
+    );
 }
 
 body {
@@ -37,8 +66,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--rainbow);
-  background-color: #787878;
+  background: var(--rainbowDate);
+  background-color: rgba(120, 120, 120, 1);
   padding: 5px;
 }
 
@@ -51,7 +80,7 @@ body {
 
 .ctrlup {
   background: var(--rainbow);
-  background-color: #787878;
+  background-color: rgba(120, 120, 120, 1);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -62,8 +91,8 @@ body {
 }
 
 .date {
-  background: var(--rainbow);
-  background-color: #787878;
+  background: var(--rainbowDate);
+  background-color: rgba(120, 120, 120, 1);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
