@@ -3,6 +3,8 @@
 body {
   margin: 0;
   font-family: Montserrat;
+  background-color: var(--mode, white);
+  color: var(--text, black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;

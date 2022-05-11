@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./App.css";
 
 const root = document.documentElement;
@@ -14,16 +14,24 @@ function setCssVar(
   root.style.setProperty(cssVar, `${distance}px`);
 }
 
+function handleLight() {
+  let mode = root.style.getPropertyValue("--mode");
+  root.style.setProperty("--mode", mode === "black" ? "white" : "black");
+  root.style.setProperty("--text", mode === "black" ? "black" : "white");
+  root.style.setProperty("--bulb_on", mode === "black" ? "inline" : "none");
+  root.style.setProperty("--bulb_off", mode === "black" ? "none" : "inline");
+}
+
 function App() {
   let ctrlup = useRef<HTMLSpanElement>(null);
   let date = useRef<HTMLSpanElement>(null);
 
-  const [mode, setMode] = useState<boolean>(true);
-
-  useEffect(() => {
-    window.addEventListener("deviceorientation", handleOrientation, true);
-    window.addEventListener("mousemove", handleMouseMove, true);
-  }, []);
+  function handleKeyPress(event: KeyboardEvent) {
+    if (event.ctrlKey && event.key === "ArrowUp") {
+      handleLight();
+      root.style.setProperty("--egg", "1");
+    }
+  }
 
   function handleOrientation(event: DeviceOrientationEvent) {
     if (!ctrlup.current || !date.current || !event.beta) return;
@@ -57,17 +65,20 @@ function App() {
     );
   }
 
-  function handleLight() {
-    setMode(!mode);
-    document.body.style.backgroundColor = mode ? "black" : "white";
-    document.body.style.color = mode ? "white" : "black";
-  }
+  useEffect(() => {
+    window.addEventListener("deviceorientation", handleOrientation);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("keydown", handleKeyPress);
+  }, []);
 
   return (
     <div className="App">
-      <div>💡 Light is {mode ? "on" : "off"}</div>
+      <div onClick={handleLight}>
+        💡 Light is <span className="bulb_on">on</span>
+        <span className="bulb_off">off</span>
+      </div>
       <br />
-      <div className="ctrlup" onClick={handleLight}>
+      <div className="ctrlup">
         <div>
           <span ref={date}>2021</span>
           <span ref={ctrlup}>CtrlUp</span>
@@ -75,6 +86,10 @@ function App() {
       </div>
       <br />
       <code>Tilt me on mobile !</code>
+      <div className="easter_egg">
+        <br />
+        <code>You've found the shortcut ! </code>
+      </div>
     </div>
   );
 }

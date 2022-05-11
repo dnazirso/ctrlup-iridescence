@@ -72,6 +72,18 @@
   margin-top: -20px;
 }
 
+.bulb_on {
+  display: var(--bulb_on, inline);
+}
+
+.bulb_off {
+  display: var(--bulb_off, none);
+}
+
+.easter_egg {
+  opacity: var(--egg, 0);
+}
+
 @media only screen and (max-width: 768px) {
   .ctrlup {
     padding: 2.5px;
