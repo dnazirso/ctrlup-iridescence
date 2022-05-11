@@ -1,71 +1,62 @@
-/* eslint-disable no-restricted-globals */
 import { useEffect, useRef } from "react";
 import "./App.css";
+
+const root = document.documentElement;
+
+function setCssVar(
+  cssVar: string,
+  rect: DOMRect,
+  ratio: number,
+  direction: "same" | "opposit"
+) {
+  let dir = direction === "same" ? 1 : -1;
+  let distance = dir * (rect.left + rect.width / 2) * ratio;
+  root.style.setProperty(cssVar, `${distance}px`);
+}
 
 function App() {
   let ctrlup = useRef<HTMLSpanElement>(null);
   let date = useRef<HTMLSpanElement>(null);
-  const root = document.documentElement;
 
   useEffect(() => {
     window.addEventListener("deviceorientation", handleOrientation, true);
+    window.addEventListener("mousemove", handleMouseMove, true);
 
     function handleOrientation(event: DeviceOrientationEvent) {
-      if (!event.beta) return;
-
-      if (ctrlup.current) {
-        let rect = ctrlup.current.getBoundingClientRect();
-        root.style.setProperty(
-          "--x",
-          `${
-            (rect.left + rect.right) * (event.beta / 180) -
-            (rect.left + rect.right) / 2
-          }px`
-        );
-      }
-      if (date.current) {
-        let rectd = date.current.getBoundingClientRect();
-        root.style.setProperty(
-          "--xDate",
-          `${
-            -(
-              (rectd.left + rectd.right) * (event.beta / 180) +
-              (rectd.left + rectd.right) / 2
-            ) / 3
-          }px`
-        );
-      }
-    }
-  }, [root.style]);
-
-  const onMouseMove = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
-    if (ctrlup.current) {
-      let rect = ctrlup.current.getBoundingClientRect();
-      root.style.setProperty(
+      if (!ctrlup.current || !date.current || !event.beta) return;
+      setCssVar(
         "--x",
-        `${
-          ((rect.left + rect.right) * (e.clientX / screen.width) -
-            (rect.left + rect.right) / 2) /
-          5
-        }px`
+        ctrlup.current.getBoundingClientRect(),
+        event.beta / 180,
+        "same"
       );
-    }
-    if (date.current) {
-      let rectd = date.current.getBoundingClientRect();
-      root.style.setProperty(
+      setCssVar(
         "--xDate",
-        `${
-          -(
-            (rectd.left + rectd.right) * (e.clientX / screen.width) +
-            (rectd.left + rectd.right) / 2
-          ) / 60
-        }px`
+        date.current.getBoundingClientRect(),
+        event.beta / 180,
+        "opposit"
       );
     }
-  };
+
+    function handleMouseMove(event: MouseEvent) {
+      if (!ctrlup.current || !date.current || !event.view) return;
+      setCssVar(
+        "--x",
+        ctrlup.current.getBoundingClientRect(),
+        event.clientX / event.view.innerWidth,
+        "same"
+      );
+      setCssVar(
+        "--xDate",
+        date.current.getBoundingClientRect(),
+        event.clientX / event.view.innerWidth,
+        "opposit"
+      );
+    }
+  }, []);
 
   return (
-    <div className="App" onMouseMove={onMouseMove}>
+    <div className="App">
       <div>
         <div>
           <span className="date" ref={date}>
