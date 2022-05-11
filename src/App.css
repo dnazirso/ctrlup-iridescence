@@ -21,18 +21,15 @@
   );
 }
 
-body {
-  background-color: black;
-}
-
 .App {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 90vh;
 }
 
-.App > div {
+.ctrlup {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,27 +39,14 @@ body {
   padding: 5px;
 }
 
-.App > div > div {
+.ctrlup > div {
   display: flex;
   flex-direction: column;
   background: black;
   padding: 15px;
 }
 
-.ctrlup {
-  background: var(--rainbow);
-  background-position: var(--x, 0);
-  background-color: rgba(181, 181, 181, 1);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: bolder;
-  font-size: 128px;
-  margin-top: -20px;
-}
-
-.date {
+.ctrlup > div :nth-child(1) {
   background: var(--rainbow);
   background-position: var(--xDate, 0);
   background-color: rgba(181, 181, 181, 1);
@@ -75,20 +59,33 @@ body {
   align-self: flex-end;
 }
 
+.ctrlup > div :nth-child(2) {
+  background: var(--rainbow);
+  background-position: var(--x, 0);
+  background-color: rgba(181, 181, 181, 1);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bolder;
+  font-size: 128px;
+  margin-top: -20px;
+}
+
 @media only screen and (max-width: 768px) {
-  .App > div {
+  .ctrlup {
     padding: 2.5px;
   }
 
-  .App > div > div {
+  .ctrlup > div {
     padding: 7.5px;
   }
 
-  .ctrlup {
+  .ctrlup > div :nth-child(2) {
     font-size: 64px;
     margin-top: -10px;
   }
-  .date {
+  .ctrlup > div :nth-child(1) {
     font-size: 8px;
   }
 }

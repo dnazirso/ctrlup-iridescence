@@ -57,14 +57,10 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      <div className="ctrlup">
         <div>
-          <span className="date" ref={date}>
-            2021
-          </span>
-          <span className="ctrlup" ref={ctrlup}>
-            CtrlUp
-          </span>
+          <span ref={date}>2021</span>
+          <span ref={ctrlup}>CtrlUp</span>
         </div>
       </div>
     </div>
