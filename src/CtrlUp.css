@@ -27,7 +27,6 @@
   align-items: center;
   background: var(--rainbow);
   background-position: var(--xDate, 0);
-  background-color: rgba(181, 181, 181, 1);
   padding: 5px;
 }
 
@@ -41,7 +40,6 @@
 .ctrlup > div :nth-child(1) {
   background: var(--rainbow);
   background-position: var(--xDate, 0);
-  background-color: rgba(181, 181, 181, 1);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -54,7 +52,6 @@
 .ctrlup > div :nth-child(2) {
   background: var(--rainbow);
   background-position: var(--x, 0);
-  background-color: rgba(181, 181, 181, 1);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -77,6 +74,7 @@
     font-size: 64px;
     margin-top: -10px;
   }
+
   .ctrlup > div :nth-child(1) {
     font-size: 8px;
   }

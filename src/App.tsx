@@ -33,10 +33,10 @@ function App() {
       <br />
       <CtrlUp />
       <br />
-      <code>Tilt me on mobile !</code>
+      <p>Tilt me on mobile !</p>
       <div className="easter_egg">
         <br />
-        <code>You've found the shortcut ! </code>
+        <code>You've found the shortcut !</code>
       </div>
     </div>
   );
